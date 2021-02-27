@@ -1,0 +1,4 @@
+AuthUserFile {path2htpassword}.htpasswd
+AuthName "{wellcome phrase}"
+AuthType Basic
+Require valid-user

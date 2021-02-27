@@ -1,0 +1,15 @@
+package: htpassword_xtra_protection
+version: '1.0'
+author: Benjamin Hacker
+supportpage: benjamin-hacker.de
+docspage: benjamin-hacker.de
+
+page:
+  title: 'Xtra Protection'
+  icon: rex-icon fa-link
+  perm: admin
+
+requires:
+  php:
+    version: '>=7.0'
+  redaxo: '>=5.0.0'
