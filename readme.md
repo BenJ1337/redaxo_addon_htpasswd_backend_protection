@@ -7,6 +7,6 @@
 2. log in your Redaxo backend
 3. navigate to AddOns and click install next to "htpassword_xtra_protection"
 4. navigate to addon page "Xtra Protextion"
-5. choose your username and password such as optioanly a wellcome phrase
+5. choose your username and password such as optionally a wellcome phrase
 6. Save the configuration
 
