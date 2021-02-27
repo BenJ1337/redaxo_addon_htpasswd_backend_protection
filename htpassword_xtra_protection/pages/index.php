@@ -1,10 +1,28 @@
 <h2>.htpassword Schutz für das Redaxo Backend einrichten</h2>
 <?php
 
-$htaccessTemplate = rex_file::get(rex_path::addon('htpassword_xtra_protection', 'src/htaccess.template'));
-echo '<div class="panel panel-default"><div class="panel-heading">.htaccess Template</div>'
-    . '<div class="panel-body"><pre>' . $htaccessTemplate . '</pre></div>'
+$nonce = rex_config::get('htpassword_xtra_protection', HtpasswordStatis::settingsPasswordReset);
+if ($nonce == null || isset($_POST["refreshnonce"])) {
+    $nonce = bin2hex(random_bytes(124));
+    rex_addon::get('htpassword_xtra_protection')->setConfig(HtpasswordStatis::settingsPasswordReset, $nonce);
+}
+echo '<div class="panel panel-default"><div class="panel-heading">Notfall URL zum löschen des Passwortschutzes</div>'
+    . '<div class="panel-body"><pre>' . rex::getServer() . 'index.php?rex-api-call=htpasswd_protection_reset&nonce=' . $nonce . '</pre>
+       <form action="' . $_SERVER["REQUEST_URI"] . '" method="post">
+       <button type="submit" class="btn btn-success" name="refreshnonce">Nonce erneuern</button>
+       </form>
+       </div>'
     . '</div>';
+
+
+$htaccessTemplate = rex_file::get(rex_path::addon('htpassword_xtra_protection', 'src/htaccess.template'));
+echo '<div class="panel panel-default">
+    <div class="panel-heading">.htaccess Template</div>'
+    . '<div class="panel-body">
+        <pre>' . $htaccessTemplate . '</pre>
+    </div>'
+    . '
+</div>';
 ?>
 <div class="row">
     <div class="col-md-8 col-sm-8 col-xs-12 col-lg-6">
