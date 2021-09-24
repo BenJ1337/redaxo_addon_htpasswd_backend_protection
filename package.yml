@@ -1,4 +1,4 @@
-package: 'htpassword_xtra_protection'
+package: 'redaxo_addon_htpasswd_backend_protection'
 version: '1.0'
 author: 'Benjamin Hacker'
 supportpage: 'benjamin-hacker.de'
